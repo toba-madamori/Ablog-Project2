@@ -7,7 +7,8 @@
 
 <ul>
     <li>{{ post.author.first_name}}-{{ post.author.last_name}}</li>
-    {{ post.body }}
+    <a href="{% url 'update_post' post.pk %}">Edit</a>--<a href="{% url 'delete_post' post.pk %}">Delete</a>
+    <div>>{{ post.body }}</div>
 </ul>
 
 <a href="{% url 'home' %}"><button type="button" class="btn btn-secondary">Home</button></a>

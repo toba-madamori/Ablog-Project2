@@ -7,7 +7,8 @@
 
  <ul>
      {% for post in blog_post %}
-        <li><a href="{% url 'article-detail' post.pk %}">{{ post.title }}</a>-{{ post.author }}</li>
+        <li><a href="{% url 'article-detail' post.pk %}">{{ post.title }}</a>
+            -{{ post.author }}  {{post.date_time.date}}</li>
             {{ post.body }}
      {% endfor %}   
  </ul>
