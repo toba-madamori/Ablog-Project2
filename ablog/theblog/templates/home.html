@@ -7,10 +7,10 @@
 
  <ul>
      {% for post in blog_post %}
-        <li><a href="{% url 'article-detail' post.pk %}">{{ post.title }}</a>
+        <li><a href="{% url 'article-detail' post.pk %}">{{ post.title }}</a> {{post.category}}
             -{{ post.author }}  {{post.date_time.date}}</li>
-            {{ post.body }}
+            {{ post.body|slice:'200'|safe }}...
      {% endfor %}   
  </ul>
-
+      
  {% endblock %}
