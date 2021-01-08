@@ -3,6 +3,7 @@
 {% block title %} {{ cats }} Category.. {% endblock %}
 
  {% block content %}
+{% if category_post %} 
 <h1>{{ cats }}</h1>
 
 <ul>
@@ -12,6 +13,9 @@
            {{ post.body|slice:'200'|safe }}...
     {% endfor %}   
 </ul>
+{% else %}
+   Sorry this page does not exist....
+{% endif %}
       
  {% endblock %}
 

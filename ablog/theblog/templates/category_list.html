@@ -7,7 +7,7 @@
 
  <ul>
      {% for cat in category %}
-       <li> {{cat.name}} </li>
+       <li> <a href="{% url 'category_body' cat|slugify %}">{{cat}}</a> </li>
      {% endfor %}   
  </ul>
       

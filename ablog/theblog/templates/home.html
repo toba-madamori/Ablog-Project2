@@ -6,12 +6,12 @@
 
 
  <ul>
-     {% for post in blog_post %}
+     {% for post in object_list %}
         <li><a href="{% url 'article-detail' post.pk %}">{{ post.title }}</a>--
-            <a href="{% url 'category_body' post.category%}">{{post.category}}</a>
+            <a href="{% url 'category_body' post.category|slugify %}">{{post.category}}</a>
             -{{ post.author }}  {{post.date_time.date}}</li>
             {{ post.body|slice:'200'|safe }}...
      {% endfor %}   
  </ul>
-    
+   
  {% endblock %}
