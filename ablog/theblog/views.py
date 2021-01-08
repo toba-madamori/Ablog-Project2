@@ -41,3 +41,12 @@ class AddCategoryView(CreateView):
     #form_class = AddPostForm
     template_name = 'add_category.html'
     fields = '__all__'     
+
+class CategoryListView(ListView):
+    model = Category
+    template_name = 'category_list.html'
+    context_object_name = 'category'
+    
+def CategoryView(request, cats):
+    category_post = Post.objects.filter(category=cats)
+    return render(request, 'category.html', {'cats':cats, 'category_post': category_post})
