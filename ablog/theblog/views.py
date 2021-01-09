@@ -3,6 +3,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from .models import Post, Category
 from .forms import AddPostForm, UpdatePostForm
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
 import datetime
 # Create your views here.
 
@@ -23,11 +24,15 @@ class ArticleDetailView(DetailView):
     template_name = 'article-detail.html'   
 
 
-class AddPostView(CreateView):
+class AddPostView(LoginRequiredMixin, CreateView):
     model = Post
     form_class = AddPostForm
     template_name = 'add_post.html'
     #fields = '__all__'     
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
 
 class UpdatePostView(UpdateView):
     model = Post
