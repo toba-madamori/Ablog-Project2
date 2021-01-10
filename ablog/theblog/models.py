@@ -11,6 +11,11 @@ class Post(models.Model):
     title_tag = models.CharField(max_length=255, null=True, blank=True)
     date_time = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     category = models.CharField(max_length=255, default= '')
+    likes = models.ManyToManyField(User, related_name='blogpost_like')
+
+
+    def number_of_likes(self):
+        return self.likes.count()
 
     def __str__(self):
         return(self.title)
