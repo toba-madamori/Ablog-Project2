@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %} {{post.title_tag }} {% endblock %}
 
 
@@ -9,10 +10,16 @@
     <li>{{ post.author.first_name}}-{{ post.author.last_name}}</li>
     {% if user.is_authenticated %}
     {% if user.id == post.author.id %}
-    <a href="{% url 'update_post' post.pk %}">Edit</a>--<a href="{% url 'delete_post' post.pk %}">Delete</a>
+    <a href="{% url 'update_post' post.pk %}">Edit</a>--<a href="{% url 'delete_post' post.pk %}">Delete</a><br>
     {% endif %}
     {% endif %}
-    <div>>{{ post.body|safe }}</div>
+
+{% if post.images %}
+    <img src="{{ post.images.url }}" alt="blog image" height="100" width="100">
+{% endif %}
+<div>{{ post.body|safe }}</div>
+   
+
 </ul>
 {% if user.is_authenticated %}
     <form action="{% url 'blogpost_like' object.id %}" method="POST">

@@ -12,7 +12,7 @@ for item in categories:
 class AddPostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['title', 'title_tag','category', 'body', 'snippet']
+        fields = ['title','title_tag','category', 'body', 'snippet', 'images']
 
         widgets = {
             'title': forms.TextInput(attrs={'class':'form-control'}),
@@ -27,7 +27,7 @@ class AddPostForm(forms.ModelForm):
 class UpdatePostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['title', 'title_tag', 'body','snippet']
+        fields = ['title', 'title_tag', 'body','snippet', 'images']
 
         widgets = {
             'title': forms.TextInput(attrs={'class':'form-control'}),
