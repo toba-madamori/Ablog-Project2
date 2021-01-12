@@ -18,7 +18,35 @@
     <img src="{{ post.images.url }}" alt="blog image" height="100" width="100">
 {% endif %}
 <div>{{ post.body|safe }}</div>
-   
+
+<br><br>
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        {% if post.author.profile.profile_image %}
+            <img src="{{ post.author.profile.profile_image.url }}" alt="..." height="130" width="170">
+        {% else %}
+        <img src="{% static 'theblog/images/default_picture.png' %}" alt="..." height="130" width="170">
+        {% endif %}
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{ post.author.first_name}}-{{ post.author.last_name}}</h5>
+          <p class="card-text"><small class="text-muted">
+              {% if post.author.profile.facebook_url %}
+                <a href="{{post.author.profile.facebook_url}}">Facebook</a>
+              {% endif %}
+
+              {% if post.author.profile.twitter_url %}
+                <a href="{{post.author.profile.twitter_url}}">Twitter</a>
+              {% endif %}
+
+          </small></p>
+          <p class="card-text"> {{post.author.profile.bio}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </ul>
 {% if user.is_authenticated %}
@@ -37,6 +65,5 @@
 <strong >{{number_of_likes}} Like{{ number_of_likes|pluralize }}</strong><br><br>
 
 
-<a href="{% url 'home' %}"><button type="button" class="btn btn-secondary">Home</button></a>
 
 {% endblock %}
