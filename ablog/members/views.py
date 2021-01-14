@@ -6,7 +6,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, User
 from django.contrib.auth.views import PasswordChangeView
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.models import User
-from .forms import SignUpForm, UpdatesettingsForm, PasswordsChangeForm
+from .forms import SignUpForm, UpdatesettingsForm, PasswordsChangeForm, CreateProfileForm, EditProfileForm
 from theblog.models import Profile
 # Create your views here.
 
@@ -40,3 +40,29 @@ class UserProfileView(DetailView):
         page_user = get_object_or_404(Profile, id=self.kwargs['pk'])
         context['page_user'] = page_user
         return context
+
+class EditProfileView(UpdateView):
+    model = Profile
+    form_class = EditProfileForm
+    template_name = 'registration/edit_profile.html'
+    success_url = reverse_lazy('home')
+    #fields = ['bio', 'profile_image', 'facebook_url', 'twitter_url']
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+
+class CreateProfileView(CreateView):
+    model = Profile
+    form_class = CreateProfileForm
+    template_name = 'registration/create_profile.html'
+    success_url = reverse_lazy('home')
+    #fields = ['bio', 'profile_image', 'facebook_url', 'twitter_url']
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+
+    
