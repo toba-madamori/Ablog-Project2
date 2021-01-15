@@ -63,7 +63,18 @@
     <a class="btn btn-outline-secondary" href="{% url 'login' %}">Login to like this article</a><br/>
 {% endif %} 
 <strong >{{number_of_likes}} Like{{ number_of_likes|pluralize }}</strong><br><br>
-
+<hr>
+<h1>Comments</h1>
+{% if not post.comment_set.all %}
+    No comments yet... <a href="{% url 'post_comment' post.pk %}">Add one</a>
+{% else %}    
+{% for comment in post.comment_set.all %}
+  <strong>{{ comment.name  }} - {{ comment.created_on.date }}</strong> <br>
+  {{ comment.body }} <br/>
+{% endfor %}   
+  <a href="{% url 'post_comment' post.pk %}">Add Comment</a>
+   
+{% endif %} <br><br>
 
 
 {% endblock %}

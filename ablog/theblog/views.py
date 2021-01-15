@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Post, Category
+from .models import Post, Category, Comment
 from .forms import AddPostForm, UpdatePostForm
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -84,3 +84,17 @@ def BlogPostLike(request, pk):
         post.likes.add(request.user)
 
     return HttpResponseRedirect(reverse('article-detail', args=[str(pk)]))        
+
+
+class PostCommentView(CreateView):
+    model = Comment
+    template_name = 'post_comment.html'    
+    ordering = ['created_on']
+    fields = ['name', 'body']
+    
+
+    def form_valid(self, form):
+        form.instance.post_id = self.kwargs['pk']
+        return super().form_valid(form)
+
+   

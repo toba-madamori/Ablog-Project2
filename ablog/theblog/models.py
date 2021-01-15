@@ -49,3 +49,16 @@ class Profile(models.Model):
 
     def get_absolute_url(self):
         return reverse('home')    
+
+class Comment(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE,)
+    name = models.CharField(max_length=255)
+    body = models.TextField(max_length=255)
+    created_on = models.DateTimeField(auto_now_add=True)
+
+   
+    def __str__(self):
+        return str(self.name) + ' | ' + str(self.body)    
+
+    def get_absolute_url(self):
+        return reverse('article-detail') 
