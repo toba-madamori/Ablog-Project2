@@ -80,8 +80,12 @@ WSGI_APPLICATION = 'ablog.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'demo_1',
+        'USER': 'tobamadamori',
+        'PASSWORD': '555777tobA',
+        'HOST': 'database-1.caaybqolpnpr.us-east-2.rds.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
