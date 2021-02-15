@@ -158,7 +158,7 @@ LOGOUT_REDIRECT_URL = 'home'
 
 
 #S3 BUCKETS CONFIG
-
+'''
 AWS_ACCESS_KEY_ID = 'AKIA4WVLNFRRF37QWMEH'
 AWS_SECRET_ACCESS_KEY = '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'
 AWS_STORAGE_BUCKET_NAME = 'tobamadamori'
@@ -172,4 +172,4 @@ AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
 #DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
+'''
