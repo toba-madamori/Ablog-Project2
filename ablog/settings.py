@@ -22,6 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+# I know im supposed to django env variables, the project is no longer live though
 SECRET_KEY = 'hhh93-4lf=b-2gw$((7t2yw#t3v8l0^vb)-w&)r-!3cc)m$6*2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -86,9 +87,9 @@ WSGI_APPLICATION = 'ablog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'demo_1',
-        'USER': 'tobamadamori',
-        'PASSWORD': '555777tobA',
+        'NAME': '********',
+        'USER': '*******',
+        'PASSWORD': '*******',
         'HOST': 'database-1.caaybqolpnpr.us-east-2.rds.amazonaws.com',
         'PORT': '5432',
     }
@@ -159,8 +160,8 @@ LOGOUT_REDIRECT_URL = 'home'
 
 #S3 BUCKETS CONFIG
 '''
-AWS_ACCESS_KEY_ID = 'AKIA4WVLNFRRF37QWMEH'
-AWS_SECRET_ACCESS_KEY = '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'
+AWS_ACCESS_KEY_ID = '*******'
+AWS_SECRET_ACCESS_KEY = '*************'
 AWS_STORAGE_BUCKET_NAME = 'tobamadamori'
 
 
